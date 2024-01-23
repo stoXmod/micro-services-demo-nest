@@ -17,13 +17,13 @@ export class ConsumerService implements OnApplicationShutdown {
 
   constructor(
     private readonly configService: ConfigService,
-    private readonly databaserService: DatabaseService,
+    private readonly databaseService: DatabaseService,
   ) {}
 
   async consume({ topic, config, onMessage }: KafkajsConsumerOptions) {
     const consumer = new KafkajsConsumer(
       topic,
-      this.databaserService,
+      this.databaseService,
       config,
       this.configService.get('KAFKA_BROKER'),
     );
