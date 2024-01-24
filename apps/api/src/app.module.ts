@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { KafkaModule } from './kafka/kafka.module';
 import { DatabaseModule } from './database/database.module';
 import { ConfigModule } from '@nestjs/config';
+import { TestConsumer } from './test.consumer';
 
 @Module({
   imports: [
@@ -12,6 +13,6 @@ import { ConfigModule } from '@nestjs/config';
     ConfigModule.forRoot({ isGlobal: true }),
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, TestConsumer],
 })
 export class AppModule {}

@@ -21,6 +21,7 @@ export class ConsumerService implements OnApplicationShutdown {
   ) {}
 
   async consume({ topic, config, onMessage }: KafkajsConsumerOptions) {
+    console.log('🚀 kafka consumer service connected!');
     const consumer = new KafkajsConsumer(
       topic,
       this.databaseService,
