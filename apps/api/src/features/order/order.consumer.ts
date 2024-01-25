@@ -9,7 +9,7 @@ export class OrderConsumer {
     console.log('order consumer initialized');
     await this.kafkaConsumerService.consume({
       topic: { topic: 'order_events' },
-      config: { groupId: 'test-consumer' },
+      config: { groupId: 'order-consumer' },
       onMessage: async (message) => {
         const orderPlacedEvent = JSON.parse(message.value.toString());
         console.log('✌️ Order Received to Kafka', orderPlacedEvent);
