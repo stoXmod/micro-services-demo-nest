@@ -48,4 +48,21 @@ export class InventoryService {
   async addProduct(productData: ProductDto): Promise<void> {
     await this.inventoryRepository.create<ProductDto>(productData);
   }
+
+  async getAllProducts(): Promise<ProductDto[]> {
+    return await this.inventoryRepository.find({});
+  }
+
+  //   delete product
+  async deleteProduct(productId: string): Promise<void> {
+    await this.inventoryRepository.deleteOne({ productId });
+  }
+
+  async updateProduct(productData: Partial<ProductDto>): Promise<void> {
+    await this.inventoryRepository.findOneAndUpdate(
+      { productId: productData.productId },
+      { $set: productData },
+      { new: true, upsert: true },
+    );
+  }
 }
