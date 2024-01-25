@@ -17,7 +17,7 @@ export class OrderService {
     // Save the order to MongoDB using the repository
     const createdOrder = await this.orderRepository.create<OrderDto>(orderData);
     // Send order placed event to Kafka
-    await this.producerService.produce('order_events', {
+    await this.producerService.produce('order_place', {
       value: JSON.stringify(createdOrder),
     });
   }

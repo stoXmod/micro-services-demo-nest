@@ -6,12 +6,14 @@ import { DatabaseModule } from './database/database.module';
 import { ConfigModule } from '@nestjs/config';
 import { TestConsumer } from './test.consumer';
 import { OrderModule } from './features/order/order.module';
+import { InventoryModule } from './features/inventory/inventory.module';
 
 @Module({
   imports: [
     KafkaModule,
     DatabaseModule,
     OrderModule,
+    InventoryModule,
     ConfigModule.forRoot({ isGlobal: true }),
   ],
   controllers: [AppController],

@@ -3,11 +3,11 @@ import { Response } from 'express';
 import { OrderService } from './order.service';
 import { OrderDto } from './dtos/order.dto';
 
-@Controller('order')
+@Controller('orders')
 export class OrderController {
   constructor(private readonly orderService: OrderService) {}
 
-  @Post('add-order')
+  @Post('place-order')
   async placeOrder(
     @Body() orderData: OrderDto,
     @Res() res: Response,
